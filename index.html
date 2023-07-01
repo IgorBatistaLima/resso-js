@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./Gilmer-Font/Gilmer Outline.otf" />
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="style.css" />
+
+    <title>Resso - Tune in together.</title>
+  </head>
+
+  <body>
+    <header class="header-principal">
+      <nav>
+        <div class="logo"></div>
+        <ul class="button-nav">
+          <li><a href="#">Início</a></li>
+          <li><a href="#">Explorar</a></li>
+          <span
+            class="iconfont icon icon-iconfont_arrow_down_solidx arrow-down-icon"
+            style="font-size: 14px; font-weight: 500; cursor: pointer"
+          ></span>
+          <li><a href="#">Ajuda</a></li>
+          <li><a href="#">Premium</a></li>
+          <li><a href="#">Baixar</a></li>
+        </ul>
+        <div class="mobile-menu-icon">
+          <button onclick="menuShow()">
+            <img class="icon" src="assets/img/menu_white_36dp.svg" alt="" />
+          </button>
+        </div>
+      </nav>
+    </header>
+    <div class="video-background">
+      <video autoplay loop muted>
+        <source
+          src="https://lf16-fe.resso.me/obj/anote-fe/socrates/home-web/static/media/gradient.06f37abf.mp4"
+          type="video/mp4"
+        />
+      </video>
+    </div>
+    <div class="section-one">
+      <div class="col" id="col1">
+        <div class="celular">
+          <div class="phone-background">
+            <video autoplay loop muted>
+              <source
+                src="https://lf16-fe.resso.me/obj/anote-fe/socrates/home-web/static/media/bg-video.54d189c7.mp4"
+                type="video/mp4"
+              />
+            </video>
+            <div class="phone-botton"></div>
+          </div>
+        </div>
+        <div class="text-site">
+          <div class="text">
+            <h1 class="line-1">Musica é</h1>
+            <h1 class="line-2">expressar.</h1>
+            <p>
+              Uma música não é igual para todos e reflete como cada um escolhe
+              se expressar! É por isso que Resso mostra diferentes vídeos e gifs
+              criados para uma mesma música. Aqui o que vale é ser você mesmo e
+              compartilhar a vibe com seus amigos.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Botão para abrir o modal -->
+    <div class="section-two">
+      <button id="open-modal-button">Publicar</button>
+      <div class="search-group">
+        <input type="text" id="search-input" placeholder="Pesquisar" />
+        <button id="search-button" onclick="filterContent()">Pesquisar</button>
+      </div>
+      <div class="posts-container"></div>
+    </div>
+
+    <!-- Modal Novo -->
+    <div id="modal" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2>Adicionar Foto, Título e Legenda</h2>
+        <form id="post-form">
+          <img id="image-loaded" class="hidden" />
+          <input type="file" id="photo-input" accept="image/*" />
+          <input type="text" id="title-input" placeholder="Título" required />
+          <input
+            type="text"
+            id="caption-input"
+            placeholder="Legenda"
+            required
+          />
+          <button id="submit-modal-button" type="submit">Salvar</button>
+        </form>
+      </div>
+    </div>
+
+    <div class="option-area">
+      <div class="country-selector">
+        <div class="selector-input">
+          <span>BR</span>
+          <img
+            class=""
+            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAkCAYAAADhAJiYAAABYWlDQ1BrQ0dDb2xvclNwYWNlRGlzcGxheVAzAAAokWNgYFJJLCjIYWFgYMjNKykKcndSiIiMUmB/yMAOhLwMYgwKicnFBY4BAT5AJQwwGhV8u8bACKIv64LMOiU1tUm1XsDXYqbw1YuvRJsw1aMArpTU4mQg/QeIU5MLikoYGBhTgGzl8pICELsDyBYpAjoKyJ4DYqdD2BtA7CQI+whYTUiQM5B9A8hWSM5IBJrB+API1klCEk9HYkPtBQFul8zigpzESoUAYwKuJQOUpFaUgGjn/ILKosz0jBIFR2AopSp45iXr6SgYGRiaMzCAwhyi+nMgOCwZxc4gxJrvMzDY7v////9uhJjXfgaGjUCdXDsRYhoWDAyC3AwMJ3YWJBYlgoWYgZgpLY2B4dNyBgbeSAYG4QtAPdHFacZGYHlGHicGBtZ7//9/VmNgYJ/MwPB3wv//vxf9//93MVDzHQaGA3kAFSFl7jXH0fsAAAFwSURBVFgJ7Za9SwNBEMVzYuG/lE6I/62BhGCREEkpBlLYWSSQKmAgWviBgh/ne2SKW7KzN3t35Qwsszs777fvJgj2eh4+AZ+AT8AnEEygCE6VQ1mWfRwHWOeVchfbL0CmRVE8xGBnsaLULpG7NkP0BdYVN7FIGdrHBB3V3jROytAMoj9N2KJO5o2mVw3hN95BtNCELeoLYUcRqiHpvkPeRpXNimSRqUbSEL6E4x1hfaoE+wUZI2GqqqQhqgB4RZqoBPvFRFhJRa0hqgF6RFolSenLlTDSXbg1GRIK/+oOtcTTBmqoNYXZEL7wG8Qh1q+JfGxi71C0JpnZEGkAPyHdmsjHprlozJIsQ0K9R94YXmDP0tAXtGQbwheXIIyxPgJSeODdWHrDm5pTtiHy8NA7Ek1pQTPsyY5GhvgKHlwjxX6Spdxlm6GgsSF5bY5c/a+Ae9YaRytDmMQPXr7GesF65l5q2Hr4BHwCPgGfQCcT+AeP9kIGX4qaVwAAAABJRU5ErkJggg=="
+            alt="drop down"
+          />
+        </div>
+      </div>
+      <div class="volume-switch">
+        <img
+          src="https://lf16-fe.resso.me/obj/anote-fe/socrates/home-web/static/media/volumn-off.1e4b5b13.png"
+          alt="volume off"
+        />
+      </div>
+    </div>
+
+    <!-- Div para exibir as informações da postagem -->
+    <div id="post-info"></div>
+
+    <script src="index.js"></script>
+  </body>
+</html>
